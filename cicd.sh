@@ -1,8 +1,8 @@
-sudo composer update -y
-sudo composer install  -y
-sudo composer install --optimize-autoloader --no-dev  -y
-sudo npm update  -y
-sudo npm install -y
+sudo composer update 
+sudo composer install  
+sudo composer install --optimize-autoloader --no-dev 
+sudo npm update 
+sudo npm install
 sudo php artisan key:generate
 sudo php artisan optimize
 sudo php artisan route:cache
