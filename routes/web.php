@@ -16,7 +16,13 @@ use App\Http\Controllers\ProfileController;
 */
 
 // route for login
-Route::get('/', function () {
+Route::get('/', function ($request) {
+    $userAgent = $request->server('HTTP_USER_AGENT');
+    if (strpos(strtolower($userAgent), 'iphone') !== false) {
+        return redirect("pawpocket://open.my.app/" . "#");
+    } else if (strpos(strtolower($userAgent), 'android') !== false) {
+        return redirect("pawpocket://open.my.app/" . "#");
+    }
     return view('auth.login');
 });
 
@@ -27,7 +33,7 @@ Route::get('/dashboard', function () {
 
 // route for urls
 Route::resource('urls', UrlController::class)
-->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified']);
 
 // route for get shortener url
 Route::get('{shortener_url}', [UrlController::class, 'shortenLink'])->name('shortener-url');
@@ -38,4 +44,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
