@@ -1,6 +1,4 @@
 sudo composer update 
-sudo composer install  
-sudo composer install --optimize-autoloader --no-dev 
 sudo npm update 
 sudo npm install
 sudo php artisan key:generate
