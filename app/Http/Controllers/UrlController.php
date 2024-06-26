@@ -106,9 +106,17 @@ class UrlController extends Controller
         return redirect(route('urls.index'));
     }
 
-    public function shortenLink($shortener_url)
+    public function shortenLink($shortener_url, Request $request)
     {
         $find = Url::where('shortener_url', $shortener_url)->first();
+
+        $userAgent = $request->server('HTTP_USER_AGENT');
+
+        if (strpos(strtolower($userAgent), 'iphone') !== false) {
+            return redirect("pawpocket://" . "?original_url=" . $find->original_url);
+        } else if (strpos(strtolower($userAgent), 'android') !== false) {
+            return redirect("pawpocket://" . "?original_url=" . $find->original_url);
+        }
         return redirect($find->original_url);
     }
 }
