@@ -20,9 +20,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('android_package_name')->nullable();
-            $table->string('sha256_android')->nullable();
+            $table->string('android_sha256')->nullable();
+            $table->string('android_uri_scheme')->nullable();
             $table->string('bundle_identifier')->nullable();
             $table->string('apple_app_prefix')->nullable();
+            $table->string('ios_uri_scheme')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
