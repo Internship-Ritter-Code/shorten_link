@@ -109,13 +109,12 @@ class UrlController extends Controller
     public function shortenLink($shortener_url, Request $request)
     {
         $find = Url::where('shortener_url', $shortener_url)->first();
-
+         //
         $userAgent = $request->server('HTTP_USER_AGENT');
-
         if (strpos(strtolower($userAgent), 'iphone') !== false) {
-            return redirect("pawpocket://open.my.app" . "?original_url=" . $find->original_url);
+            return redirect("https://apps.apple.com/us/app/minuman-instant-deliveries/id6450899803");
         } else if (strpos(strtolower($userAgent), 'android') !== false) {
-            return redirect("pawpocket://open.my.app" . "?original_url=" . $find->original_url);
+            return redirect("https://play.google.com/store/apps/details?id=com.minumanapp");
         }
         return redirect($find->original_url);
     }
