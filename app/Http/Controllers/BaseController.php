@@ -16,9 +16,9 @@ class BaseController extends Controller
         //
         $userAgent = $request->server('HTTP_USER_AGENT');
         if (strpos(strtolower($userAgent), 'iphone') !== false) {
-            return redirect("pawpocket://open.my.app/" . "#");
+            return redirect("https://apps.apple.com/us/app/minuman-instant-deliveries/id6450899803");
         } else if (strpos(strtolower($userAgent), 'android') !== false) {
-            return redirect("pawpocket://open.my.app/" . "#");
+            return redirect("https://play.google.com/store/apps/details?id=com.minumanapp");
         }
         return view('auth.login');
     }
