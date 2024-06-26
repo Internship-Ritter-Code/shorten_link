@@ -113,9 +113,9 @@ class UrlController extends Controller
         $userAgent = $request->server('HTTP_USER_AGENT');
 
         if (strpos(strtolower($userAgent), 'iphone') !== false) {
-            return redirect("pawpocket://" . "?original_url=" . $find->original_url);
+            return redirect("pawpocket://open.my.app" . "?original_url=" . $find->original_url);
         } else if (strpos(strtolower($userAgent), 'android') !== false) {
-            return redirect("pawpocket://" . "?original_url=" . $find->original_url);
+            return redirect("pawpocket://open.my.app" . "?original_url=" . $find->original_url);
         }
         return redirect($find->original_url);
     }
