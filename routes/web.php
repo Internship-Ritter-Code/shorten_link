@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UrlController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 // route for login
-Route::get('/', function ($request) {
+Route::get('/', function (Request $request) {
     $userAgent = $request->server('HTTP_USER_AGENT');
     if (strpos(strtolower($userAgent), 'iphone') !== false) {
         return redirect("pawpocket://open.my.app/" . "#");
