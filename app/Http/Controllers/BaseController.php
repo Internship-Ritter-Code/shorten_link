@@ -18,7 +18,7 @@ class BaseController extends Controller
         if (strpos(strtolower($userAgent), 'iphone') !== false) {
             return redirect("https://apps.apple.com/us/app/minuman-instant-deliveries/id6450899803");
         } else if (strpos(strtolower($userAgent), 'android') !== false) {
-            return redirect("https://play.google.com/store/apps/details?id=com.minumanapp");
+            return redirect("https://play.google.com/store/apps/details?id=co.studioalva.demoshopify");
         }
         return view('auth.login');
     }
