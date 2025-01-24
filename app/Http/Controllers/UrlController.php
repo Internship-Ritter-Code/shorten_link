@@ -132,7 +132,7 @@ class UrlController extends Controller
         $data = $request->all();
         $data['user_id'] = 1;
         $data['title'] =  "Shopify Webhook";
-        $data['original_url'] =  $request->url;
+        $data['original_url'] =  "https://pawpocket.myshopify.com/products/t-shirt-example-1";
         $data['shortener_url'] = Str::random(5);
         $data['data'] = json_encode($data);
         Url::create($data);
