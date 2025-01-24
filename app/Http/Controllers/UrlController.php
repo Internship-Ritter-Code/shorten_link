@@ -109,7 +109,7 @@ class UrlController extends Controller
     public function shortenLink($shortener_url, Request $request)
     {
         $find = Url::where('shortener_url', $shortener_url)->first();
-         //
+        //
         $userAgent = $request->server('HTTP_USER_AGENT');
         if (strpos(strtolower($userAgent), 'iphone') !== false) {
             return redirect("https://apps.apple.com/us/app/minuman-instant-deliveries/id6450899803");
@@ -117,5 +117,25 @@ class UrlController extends Controller
             return redirect("https://play.google.com/store/apps/details?id=co.studioalva.demoshopify");
         }
         return redirect($find->original_url);
+    }
+
+    // Create Webhook for Shopify
+    public function webhookShopify(Request $request)
+    {
+        $data = $request->all();
+
+        // Save to database
+        $data = $request->all();
+        $data['user_id'] = 1;
+        $data['title'] =  "Shopify Webhook";
+        $data['original_url'] =  $request->url;
+        $data['shortener_url'] = Str::random(5);
+        $data['data'] = json_encode($data);
+        Url::create($data);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ]);
     }
 }
