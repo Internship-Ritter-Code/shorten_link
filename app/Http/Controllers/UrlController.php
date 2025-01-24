@@ -6,6 +6,7 @@ use App\Models\Url;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UrlController extends Controller
 {
@@ -123,6 +124,9 @@ class UrlController extends Controller
     public function webhookShopify(Request $request)
     {
         $data = $request->all();
+
+        // Make Log
+        Log::info('Shopify Webhook', $data);
 
         // Save to database
         $data = $request->all();
